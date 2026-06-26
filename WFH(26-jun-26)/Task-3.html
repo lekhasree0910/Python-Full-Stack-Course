@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python-FSD: Responsive Design Tasks (1-20)</title>
+    <style>
+        /* Base / Desktop First Reset and Common Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        body {
+            padding: 20px;
+            color: #333;
+            /* Task 2: Desktop Background */
+            background-color: #e0f7fa; 
+        }
+        h2.section-title {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 40px;
+            border-radius: 5px;
+        }
+        h3.task-title {
+            margin: 20px 0 10px 0;
+            color: #34495e;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 5px;
+        }
+        .demo-card {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .box {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .sample-img {
+            width: 100%;
+            height: 120px;
+            background-color: #bdc3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        /* ==========================================
+           LEVEL 1 — Basic Media Queries (1–5)
+           ========================================== */
+        /* Task 1: Typography */
+        .l1-t1-heading { font-size: 48px; }
+
+        /* Task 3: Widths */
+        .l1-t3-para { width: 70%; margin: 0 auto; background: #f9f9f9; padding: 10px; }
+
+        /* Task 4: Layout Direction */
+        .l1-t4-row { display: flex; flex-direction: row; gap: 15px; }
+        .l1-t4-row .box { flex: 1; }
+
+        /* Task 5: Visibility */
+        .l1-t5-img { display: block; margin-top: 10px; }
+
+
+        /* ==========================================
+           LEVEL 2 — Responsive Navigation (6–9)
+           ========================================== */
+        /* Task 6 & 7 & 9: Nav Bar Engine */
+        .l2-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #2c3e50;
+            padding: 15px 20px;
+            color: white;
+            border-radius: 4px;
+        }
+        .l2-nav-menu { display: flex; list-style: none; gap: 20px; }
+        .l2-nav-menu a { color: white; text-decoration: none; }
+        .l2-menu-btn { display: none; background: #34495e; border: none; color: white; padding: 8px 12px; cursor: pointer; }
+
+        /* Task 8: Logo Scaling */
+        .l2-logo { font-weight: bold; font-size: 32px; background: #e74c3c; padding: 5px 10px; border-radius: 4px; display: inline-block; }
+
+
+        /* ==========================================
+           LEVEL 3 — Responsive Layouts (10–13)
+           ========================================== */
+        /* Task 10: 4-2-1 Cards */
+        .l3-t10-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+
+        /* Task 11: 5-3-2 Gallery */
+        .l3-t11-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+
+        /* Task 12: Dashboard Layout */
+        .l3-t12-dash { display: flex; flex-direction: row; gap: 15px; }
+        .l3-t12-sidebar { width: 200px; background: #34495e; color: white; padding: 15px; }
+        .l3-t12-main { flex: 1; background: #ecf0f1; padding: 15px; min-height: 120px; }
+
+        /* Task 13: 3-2-1 Pricing */
+        .l3-t13-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .pricing-plan { border: 2px solid #3498db; padding: 15px; text-align: center; border-radius: 6px; }
+
+
+        /* ==========================================
+           LEVEL 4 — Responsive Typography (14–16)
+           ========================================== */
+        /* Task 14: Complex Type Scaling */
+        .l4-t14-head { font-size: 40px; }
+        .l4-t14-para { font-size: 18px; line-height: 1.4; }
+
+        /* Task 15: Adaptive Button */
+        .l4-t15-btn { width: 200px; height: 60px; background: #2ecc71; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+
+        /* Task 16: Fluid Login Form */
+        .l4-t16-form { width: 400px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 6px; }
+        .l4-t16-form input { width: 100%; padding: 8px; margin: 8px 0; }
+
+
+        /* ==========================================
+           LEVEL 5 — Responsive Components (17–19)
+           ========================================== */
+        /* Task 17: 4-2-1 Footer */
+        .l5-t17-footer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; background: #2c3e50; color: white; padding: 20px; border-radius: 4px; }
+
+        /* Task 18: Profile Card Split/Stack */
+        .l5-t18-profile { display: flex; flex-direction: row; border: 1px solid #ddd; padding: 15px; gap: 20px; border-radius: 6px; }
+        .l5-t18-avatar { width: 120px; height: 120px; background: #95a5a6; border-radius: 6px; flex-shrink: 0; }
+
+        /* Task 19: Stacked Mobile Table Architecture */
+        .l5-t19-table { width: 100%; border-collapse: collapse; }
+        .l5-t19-table th, .l5-t19-table td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        .l5-t19-table th { background: #f4f4f4; }
+
+
+        /* ==========================================
+           LEVEL 6 — Mini Project (20)
+           ========================================== */
+        .college-root { display: flex; flex-direction: column; gap: 20px; background: #fff; padding: 15px; border: 2px solid #2c3e50; border-radius: 8px; }
+        .coll-header { display: flex; justify-content: space-between; align-items: center; background: #2c3e50; color: white; padding: 15px; }
+        .coll-nav { display: flex; gap: 15px; list-style: none; }
+        .coll-nav a { color: white; text-decoration: none; }
+        .coll-hero { background: #3498db; color: white; padding: 40px; text-align: center; }
+        .coll-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .coll-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .coll-section { padding: 15px; border: 1px solid #eee; background: #fafafa; }
+
+
+        /* ==========================================
+           RESPONSIVE BREAKPOINTS (MEDIA QUERIES)
+           ========================================== */
+
+        /* TABLET MEDIA QUERY */
+        @media (max-width: 1024px) {
+            /* Task 2: Background Change */
+            body { background-color: #e8f5e9; } 
+
+            /* Task 1: Typography */
+            .l1-t1-heading { font-size: 36px; }
+
+            /* Task 3: Widths */
+            .l1-t3-para { width: 90%; }
+
+            /* Task 8: Logo */
+            .l2-logo { font-size: 24px; }
+
+            /* Task 10: 2 Columns */
+            .l3-t10-grid { grid-template-columns: repeat(2, 1fr); }
+
+            /* Task 11: 3 Columns */
+            .l3-t11-grid { grid-template-columns: repeat(3, 1fr); }
+
+            /* Task 13: 2 Plans */
+            .l3-t13-grid { grid-template-columns: repeat(2, 1fr); }
+
+            /* Task 16: Form Width */
+            .l4-t16-form { width: 300px; }
+
+            /* Task 17: 2 Columns */
+            .l5-t17-footer { grid-template-columns: repeat(2, 1fr); }
+
+            /* Task 20: Mini Project Tablet Overrides */
+            .coll-grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* MOBILE MEDIA QUERY */
+        @media (max-width: 768px) {
+            /* Task 2: Background Change */
+            body { background-color: #f5f5f5; }
+
+            /* Task 1: Typography */
+            .l1-t1-heading { font-size: 24px; }
+
+            /* Task 3: Widths */
+            .l1-t3-para { width: 100%; }
+
+            /* Task 4: Row to Column conversion */
+            .l1-t4-row { flex-direction: column; }
+
+            /* Task 5: Hide Element on Mobile */
+            .l1-t5-img { display: none; }
+
+            /* Task 6 & 9: Nav Layout Vertical Stack */
+            .l2-nav-container { flex-direction: column; gap: 10px; }
+            .l2-nav-menu { flex-direction: column; width: 100%; text-align: center; gap: 10px; }
+
+            /* Task 7: Hide Menu & Show Button Toggle Mock */
+            .l2-hide-target { display: none; }
+            .l2-menu-btn { display: block; }
+
+            /* Task 8: Logo */
+            .l2-logo { font-size: 18px; }
+
+            /* Task 10: 1 Column */
+            .l3-t10-grid { grid-template-columns: 1fr; }
+
+            /* Task 11: 2 Columns */
+            .l3-t11-grid { grid-template-columns: repeat(2, 1fr); }
+
+            /* Task 12: Sidebar moves top */
+            .l3-t12-dash { flex-direction: column; }
+            .l3-t12-sidebar { width: 100%; }
+
+            /* Task 13: 1 Plan */
+            .l3-t13-grid { grid-template-columns: 1fr; }
+
+            /* Task 14: Typography & Line Height Adjustment */
+            .l4-t14-head { font-size: 28px; }
+            .l4-t14-para { font-size: 16px; line-height: 1.8; }
+
+            /* Task 15: Full Width Button Scaling */
+            .l4-t15-btn { width: 100%; height: 50px; }
+
+            /* Task 16: Fluid Mobile Form Boundary */
+            .l4-t16-form { width: 95%; }
+
+            /* Task 17: 1 Column */
+            .l5-t17-footer { grid-template-columns: 1fr; }
+
+            /* Task 18: Card Flip Stack */
+            .l5-t18-profile { flex-direction: column; text-align: center; align-items: center; }
+
+            /* Task 19: Unravel Table Elements into Sequential Content Cards */
+            .l5-t19-table, .l5-t19-table thead, .l5-t19-table tbody, .l5-t19-table th, .l5-t19-table td, .l5-t19-table tr { 
+                display: block; 
+            }
+            .l5-t19-table thead { display: none; } /* Hide headers */
+            .l5-t19-table tr { margin-bottom: 15px; border: 1px solid #ccc; padding: 10px; background: #fff; border-radius: 4px; }
+            .l5-t19-table td { border: none; padding: 5px 0; border-bottom: 1px dashed #eee; }
+
+            /* Task 20: Mini Project Core Collapse */
+            .coll-header { flex-direction: column; gap: 10px; }
+            .coll-nav { flex-direction: column; align-items: center; width: 100%; }
+            .coll-grid-3, .coll-grid-2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python-FSD: Responsive Design Labs</h1>
+
+    <h2 class="section-title">Level 1 — Basic Media Queries</h2>
+    
+    <h3 class="task-title">Task 1 & Task 2</h3>
+    <div class="demo-card">
+        <h1 class="l1-t1-heading">Adaptive Font Title (Task 1)</h1>
+        <p>The background color of this entire web application context transitions colors across devices (Task 2).</p>
+    </div>
+
+    <h3 class="task-title">Task 3</h3>
+    <div class="demo-card">
+        <p class="l1-t3-para">This content row component adjusts its internal container width dynamically depending on active screen sizes.</p>
+    </div>
+
+    <h3 class="task-title">Task 4</h3>
+    <div class="demo-card">
+        <div class="l1-t4-row">
+            <div class="box">Box Component A</div>
+            <div class="box">Box Component B</div>
+            <div class="box">Box Component C</div>
+        </div>
+    </div>
+
+    <h3 class="task-title">Task 5</h3>
+    <div class="demo-card">
+        <p>Image below will completely unmount from rendering viewports if size matches &le;768px.</p>
+        <div class="sample-img l1-t5-img">Responsive View Target Image Asset</div>
+    </div>
+
+
+    <h2 class="section-title">Level 2 — Responsive Navigation</h2>
+    
+    <h3 class="task-title">Task 6 & Task 9</h3>
+    <div class="demo-card">
+        <nav class="l2-nav-container">
+            <div>LogoFrame</div>
+            <ul class="l2-nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h3 class="task-title">Task 7</h3>
+    <div class="demo-card">
+        <nav class="l2-nav-container">
+            <div>LogoFrame</div>
+            <button class="l2-menu-btn">☰ Menu</button>
+            <ul class="l2-nav-menu l2-hide-target">
+                <li><a href="#">Dashboard Link</a></li>
+                <li><a href="#">Logout Portal</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h3 class="task-title">Task 8</h3>
+    <div class="demo-card">
+        <div class="l2-logo">COLLEGE-SYSTEM</div>
+    </div>
+
+
+    <h2 class="section-title">Level 3 — Responsive Layouts</h2>
+    
+    <h3 class="task-title">Task 10</h3>
+    <div class="demo-card">
+        <div class="l3-t10-grid">
+            <div class="box">Card Alpha</div><div class="box">Card Beta</div>
+            <div class="box">Card Gamma</div><div class="box">Card Delta</div>
+        </div>
+    </div>
+
+    <h3 class="task-title">Task 11</h3>
+    <div class="demo-card">
+        <div class="l3-t11-grid">
+            <div class="box">Img 1</div><div class="box">Img 2</div><div class="box">Img 3</div>
+            <div class="box">Img 4</div><div class="box">Img 5</div>
+        </div>
+    </div>
+
+    <h3 class="task-title">Task 12</h3>
+    <div class="demo-card">
+        <div class="l3-t12-dash">
+            <aside class="l3-t12-sidebar">Dashboard Options Navigation Side-Menu</aside>
+            <main class="l3-t12-main">Main Application Workspace Context Output Panel Block</main>
+        </div>
+    </div>
+
+    h3 class="task-title">Task 13</h3>
+    <div class="demo-card">
+        <div class="l3-t13-grid">
+            <div class="pricing-plan"><h3>Starter</h3><p>$5/mo</p></div>
+            <div class="pricing-plan"><h3>Enterprise</h3><p>$25/mo</p></div>
+            <div class="pricing-plan"><h3>Unlimited Core</h3><p>$95/mo</p></div>
+        </div>
+    </div>
+
+
+    <h2 class="section-title">Level 4 — Responsive Typography</h2>
+    
+    <h3 class="task-title">Task 14</h3>
+    <div class="demo-card">
+        <h1 class="l4-t14-head">Dynamic Header Standard</h1>
+        <p class="l4-t14-para">This block uses responsive line-height padding values designed for touch interface readability optimizations over small form factor view screens.</p>
+    </div>
+
+    <h3 class="task-title">Task 15</h3>
+    <div class="demo-card">
+        <button class="l4-t15-btn">Submission Trigger</button>
+    </div>
+
+    <h3 class="task-title">Task 16</h3>
+    <div class="demo-card">
+        <div class="l4-t16-form">
+            <h4>Access Terminal Login</h4>
+            <input type="text" placeholder="Identity Handle Token">
+            <input type="password" placeholder="Passphrase Secret Key">
+        </div>
+    </div>
+
+
+    <h2 class="section-title">Level 5 — Responsive Components</h2>
+    
+    <h3 class="task-title">Task 17</h3>
+    <div class="demo-card">
+        <footer class="l5-t17-footer">
+            <div><h5>Links Block A</h5></div><div><h5>Links Block B</h5></div>
+            <div><h5>Links Block C</h5></div><div><h5>Links Block D</h5></div>
+        </footer>
+    </div>
+
+    <h3 class="task-title">Task 18</h3>
+    <div class="demo-card">
+        <div class="l5-t18-profile">
+            <div class="l5-t18-avatar"></div>
+            <div>
+                <h4>Dr. Angela Martin</h4>
+                <p>Senior Infrastructure Engineer Consultant Deep Intelligence Division Systems.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="task-title">Task 19</h3>
+    <div class="demo-card">
+        <table class="l5-t19-table">
+            <thead>
+                <tr><th>Component</th><th>ID Hash</th><th>Status Code</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Core Unit Architecture</td><td>0x8812</td><td>Active</td></tr>
+                <tr><td>Database Instance Layer</td><td>0x94B1</td><td>Operational</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <h2 class="section-title">Level 6 — Mini Project</h2>
+    
+    <h3 class="task-title">Task 20 (Responsive College Portal Homepage Layout Ecosystem)</h3>
+    <div class="demo-card">
+        <div class="college-root">
+            <header class="coll-header">
+                <h2>STATE UNIVERSITY SYSTEM</h2>
+                <ul class="coll-nav">
+                    <li><a href="#">About</a></li><li><a href="#">Courses</a></li>
+                    <li><a href="#">Faculty</a></li><li><a href="#">Contact</a></li>
+                </ul>
+            </header>
+            
+            <section class="coll-hero">
+                <h1>Shape The Future Matrix System</h1>
+                <p>Enrollment pathways for the 2026 Academic Term are now open.</p>
+            </section>
+            
+            <section class="coll-section">
+                <h3>About Our Institution</h3>
+                <p>Delivering high-caliber curriculum paradigms and research excellence for over a century.</p>
+            </section>
+
+            <section class="coll-section">
+                <h3>Featured Courses Available</h3>
+                <br>
+                <div class="coll-grid-3">
+                    <div class="box">Data Systems</div><div class="box">Applied Physics</div><div class="box">Cyber Law</div>
+                </div>
+            </section>
+
+            <section class="coll-section">
+                <h3>Honored Faculty Chairs</h3>
+                <br>
+                <div class="coll-grid-2">
+                    <div class="box">Research Branch Alpha</div><div class="box">Development Group Beta</div>
+                </div>
+            </section>
+
+            <section class="coll-section">
+                <h3>Student Testimonials</h3>
+                <p><em>"The practical application models completely prepared me for enterprise framework engineering roles immediately post graduation."</em> - Alumnus 4041</p>
+            </section>
+
+            <section class="coll-section">
+                <h3>Contact Admissions Registry Office</h3>
+                <br>
+                <div class="l4-t16-form" style="width: 100%; margin: 0;">
+                    <input type="text" placeholder="Full Candidate Legal Name">
+                    <input type="email" placeholder="Verification Email Handle">
+                </div>
+            </section>
+
+            <footer style="background: #2c3e50; color: white; padding: 15px; text-align: center; border-radius: 4px;">
+                <p>© 2026 University Architecture Base Engine Module. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+</body>
+</html>
