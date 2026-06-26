@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python-FSD: CSS Grid Tasks (1-20)</title>
+    <style>
+        /* Global Styles & Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f0f3f6;
+            color: #333;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+        h2 {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 40px;
+            border-radius: 5px;
+        }
+        h3 {
+            margin: 20px 0 10px 0;
+            color: #34495e;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 5px;
+        }
+        .demo-container {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+        .box {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .placeholder-img {
+            background-color: #bdc3c7;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Level 1 — Grid Basics */
+        .l1-t1-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .l1-t2-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            width: 500px;
+            height: 300px;
+            gap: 10px;
+            border: 2px dashed #95a5a6;
+        }
+        .l1-t3-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px; /* Equal spacing for rows and columns */
+        }
+        .l1-t4-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .l1-t4-grid .placeholder-img {
+            height: 150px;
+        }
+        .l1-t5-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .student-card {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            background: #fafafa;
+        }
+        .student-avatar {
+            width: 70px;
+            height: 70px;
+            background: #7f8c8d;
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+        }
+
+        /* Level 2 — Grid Columns & Rows */
+        .l2-t6-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 80px);
+            gap: 10px;
+        }
+        .l2-t7-grid {
+            display: grid;
+            grid-template-columns: 150px 2fr 1fr;
+            gap: 15px;
+        }
+        .l2-t7-grid .box { background-color: #9b59b6; }
+        
+        .l2-t8-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 200px; /* Forces equal row heights */
+            gap: 20px;
+        }
+        .price-card {
+            border: 2px solid #e74c3c;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Level 3 — Grid Gap & Alignment */
+        .l3-t9-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            row-gap: 20px;
+            column-gap: 30px;
+        }
+        .l3-t10-grid {
+            display: grid;
+            width: 600px;
+            height: 400px;
+            background: #ebedef;
+            grid-template-columns: repeat(2, 150px);
+            grid-template-rows: repeat(2, 100px);
+            gap: 15px;
+            justify-content: center; /* Horizontally center grid items */
+            align-content: center;   /* Vertically center grid items */
+        }
+        .l3-t11-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .align-test-container {
+            height: 120px;
+            background: #e1e4e6;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .align-test-container .box { padding: 10px; min-width: 50px; }
+
+        /* Level 4 — Grid Item Positioning */
+        .l4-t12-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .l4-t12-grid .box:first-child {
+            grid-column: span 2;
+            background-color: #e67e22;
+        }
+        
+        .l4-t13-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr 1fr;
+            gap: 10px;
+        }
+        .l4-t13-grid .header { grid-column: 1 / -1; background: #2c3e50; color: white; padding: 15px; text-align: center; }
+        .l4-t13-grid .sidebar { grid-column: 1; background: #34495e; color: white; padding: 15px; }
+        .l4-t13-grid .main { grid-column: 2 / -1; background: #ecf0f1; padding: 15px; min-height: 150px; }
+        .l4-t13-grid .footer { grid-column: 1 / -1; background: #bdc3c7; padding: 15px; text-align: center; }
+
+        .l4-t14-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .magazine-featured {
+            grid-column: span 2;
+            grid-row: span 2;
+            background-color: #27ae60;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+        }
+        .magazine-regular {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .l4-t15-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .showcase-featured {
+            grid-column: span 2;
+            background: #f1c40f;
+            color: #333 !important;
+        }
+
+        /* Level 5 — Grid Template Areas */
+        .l5-t16-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-areas: 
+                "header header"
+                "sidebar main"
+                "sidebar main"
+                "footer footer";
+            gap: 10px;
+        }
+        .l5-t16-grid .h { grid-area: header; background: #2c3e50; color: white; padding: 10px; text-align: center;}
+        .l5-t16-grid .s { grid-area: sidebar; background: #7f8c8d; color: white; padding: 20px; }
+        .l5-t16-grid .m { grid-area: main; background: #ecf0f1; padding: 20px; min-height: 120px; }
+        .l5-t16-grid .f { grid-area: footer; background: #bdc3c7; padding: 10px; text-align: center; }
+
+        .l5-t17-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr 150px;
+            grid-template-areas: 
+                "header header header"
+                "menu content ads"
+                "menu content ads"
+                "footer footer footer";
+            gap: 10px;
+        }
+        .l5-t17-grid .h { grid-area: header; background: #16a085; color: white; padding: 10px; }
+        .l5-t17-grid .m { grid-area: menu; background: #2c3e50; color: white; padding: 15px; }
+        .l5-t17-grid .c { grid-area: content; background: #fff; border: 1px solid #ddd; padding: 20px; min-height: 150px; }
+        .l5-t17-grid .a { grid-area: ads; background: #f39c12; color: white; padding: 15px; }
+        .l5-t17-grid .f { grid-area: footer; background: #bdc3c7; padding: 10px; text-align: center; }
+
+        .l5-t18-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            grid-template-areas: 
+                "header header"
+                "nav nav"
+                "main sidebar"
+                "footer footer";
+            gap: 10px;
+        }
+        .l5-t18-grid .h { grid-area: header; background: #2980b9; color: white; padding: 15px; }
+        .l5-t18-grid .n { grid-area: nav; background: #34495e; color: white; padding: 10px; }
+        .l5-t18-grid .m { grid-area: main; background: #fff; border: 1px solid #ddd; padding: 20px; min-height: 150px;}
+        .l5-t18-grid .s { grid-area: sidebar; background: #ecf0f1; padding: 15px; }
+        .l5-t18-grid .f { grid-area: footer; background: #2c3e50; color: white; padding: 10px; text-align: center; }
+
+        /* Level 6 — Responsive Grid */
+        .l6-t19-grid {
+            display: grid;
+            gap: 15px;
+            /* Default Mobile view: 1 Column */
+            grid-template-columns: repeat(1, 1fr);
+        }
+        /* Tablet Breakpoint */
+        @media (min-width: 600px) {
+            .l6-t19-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        /* Desktop Breakpoint */
+        @media (min-width: 1024px) {
+            .l6-t19-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* Task 20 — Complete E-Commerce Homepage Layout */
+        .ecommerce-root {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            grid-template-areas: 
+                "header header"
+                "nav nav"
+                "hero hero"
+                "cats cats"
+                "sidebar main"
+                "reviews reviews"
+                "footer footer";
+            gap: 20px;
+            background: #fff;
+            padding: 15px;
+            border: 2px solid #2c3e50;
+            border-radius: 8px;
+        }
+        .eco-header { grid-area: header; background: #2c3e50; color: white; padding: 15px; text-align: center;}
+        .eco-nav { grid-area: nav; background: #f1c40f; padding: 10px; font-weight: bold; text-align: center; }
+        .eco-hero { grid-area: hero; background: #3498db; color: white; padding: 40px; text-align: center; border-radius: 4px; }
+        
+        .eco-cats { 
+            grid-area: cats; 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 10px; 
+        }
+        .eco-cat-card { background: #e8f4f8; padding: 15px; text-align: center; font-weight: bold; border-radius: 4px;}
+        
+        .eco-sidebar { grid-area: sidebar; background: #f9f9f9; padding: 15px; border-right: 1px solid #ddd; }
+        
+        .eco-main { 
+            grid-area: main; 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px; 
+        }
+        .eco-product-card { border: 1px solid #eee; padding: 15px; border-radius: 4px; background: white; text-align: center; }
+        .eco-product-img { height: 100px; background: #eee; margin-bottom: 8px; }
+
+        .eco-reviews { 
+            grid-area: reviews; 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            background: #fafafa;
+            padding: 15px;
+        }
+        .eco-review-card { border-left: 4px solid #2ecc71; padding-left: 10px; background: #fff; padding: 10px; }
+        
+        .eco-footer { grid-area: footer; background: #2c3e50; color: white; padding: 15px; text-align: center; }
+
+        /* Responsive styling for E-commerce Mini Project */
+        @media (max-width: 768px) {
+            .ecommerce-root {
+                grid-template-columns: 1fr;
+                grid-template-areas: 
+                    "header" "nav" "hero" "cats" "main" "sidebar" "reviews" "footer";
+            }
+            .eco-cats { grid-template-columns: repeat(2, 1fr); }
+            .eco-main { grid-template-columns: repeat(2, 1fr); }
+            .eco-reviews { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python-FSD: CSS Grid Mastery Lab</h1>
+
+    <h2>Level 1 — Grid Basics</h2>
+    
+    <h3>Task 1</h3>
+    <div class="demo-container">
+        <div class="l1-t1-grid">
+            <div class="box">Box 1</div><div class="box">Box 2</div><div class="box">Box 3</div>
+            <div class="box">Box 4</div><div class="box">Box 5</div><div class="box">Box 6</div>
+        </div>
+    </div>
+
+    <h3>Task 2</h3>
+    <div class="demo-container">
+        <div class="l1-t2-grid">
+            <div class="box">1</div><div class="box">2</div>
+            <div class="box">3</div><div class="box">4</div>
+        </div>
+    </div>
+
+    <h3>Task 3</h3>
+    <div class="demo-container">
+        <div class="l1-t3-grid">
+            <div class="box">Item 1</div><div class="box">Item 2</div><div class="box">Item 3</div><div class="box">Item 4</div>
+            <div class="box">Item 5</div><div class="box">Item 6</div><div class="box">Item 7</div><div class="box">Item 8</div>
+        </div>
+    </div>
+
+    <h3>Task 4</h3>
+    <div class="demo-container">
+        <div class="l1-t4-grid">
+            <div class="placeholder-img">Image 1</div><div class="placeholder-img">Image 2</div><div class="placeholder-img">Image 3</div>
+            <div class="placeholder-img">Image 4</div><div class="placeholder-img">Image 5</div><div class="placeholder-img">Image 6</div>
+            <div class="placeholder-img">Image 7</div><div class="placeholder-img">Image 8</div><div class="placeholder-img">Image 9</div>
+        </div>
+    </div>
+
+    <h3>Task 5</h3>
+    <div class="demo-container">
+        <div class="l1-t5-grid">
+            <div class="student-card"><div class="student-avatar"></div><h4>Virat</h4><p>Mech</p><p>Roll: 018</p></div>
+            <div class="student-card"><div class="student-avatar"></div><h4>Rohit</h4><p>Computer Science</p><p>Roll: 045</p></div>
+            <div class="student-card"><div class="student-avatar"></div><h4>Sachin</h4><p>Civil</p><p>Roll: 010</p></div>
+            <div class="student-card"><div class="student-avatar"></div><h4>Smriti</h4><p>Bio Tech</p><p>Roll: 008</p></div>
+            <div class="student-card"><div class="student-avatar"></div><h4>Jemimah</h4><p>Electronics</p><p>Roll: 005</p></div>
+            <div class="student-card"><div class="student-avatar"></div><h4>Dhoni</h4><p>Civics</p><p>Roll: 007</p></div>
+        </div>
+    </div>
+
+
+    <h2>Level 2 — Grid Columns & Rows</h2>
+    
+    <h3>Task 6</h3>
+    <div class="demo-container">
+        <div class="l2-t6-grid">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+            <div class="box">5</div><div class="box">6</div><div class="box">7</div><div class="box">8</div>
+            <div class="box">9</div><div class="box">10</div><div class="box">11</div><div class="box">12</div>
+        </div>
+    </div>
+
+    <h3>Task 7</h3>
+    <div class="demo-container">
+        <div class="l2-t7-grid">
+            <div class="box">150px Width</div>
+            <div class="box">2fr Width Space Share</div>
+            <div class="box">1fr Width Space Share</div>
+        </div>
+    </div>
+
+    <h3>Task 8</h3>
+    <div class="demo-container">
+        <div class="l2-t8-grid">
+            <div class="price-card"><h3>Basic Plan</h3><p>$10 / month</p></div>
+            <div class="price-card"><h3>Medium Plan</h3><p>$25 / month</p></div>
+            <div class="price-card"><h3>Pro Plan</h3><p>$99 / month</p></div>
+        </div>
+    </div>
+
+
+    <h2>Level 3 — Grid Gap & Alignment</h2>
+    
+    <h3>Task 9</h3>
+    <div class="demo-container">
+        <div class="l3-t9-grid">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+            <div class="box">5</div><div class="box">6</div><div class="box">7</div><div class="box">8</div>
+            <div class="box">9</div><div class="box">10</div><div class="box">11</div><div class="box">12</div>
+        </div>
+    </div>
+
+    <h3>Task 10</h3>
+    <div class="demo-container">
+        <div class="l3-t10-grid">
+            <div class="box">Item 1</div><div class="box">Item 2</div>
+            <div class="box">Item 3</div><div class="box">Item 4</div>
+        </div>
+    </div>
+
+    <h3>Task 11 (Alignment Test Matrix)</h3>
+    <div class="demo-container l3-t11-wrapper">
+        <div>
+            <p>justify-items: start</p>
+            <div class="align-test-container" style="justify-items: start;">
+                <div class="box">A</div><div class="box">B</div>
+            </div>
+        </div>
+        <div>
+            <p>justify-items: center</p>
+            <div class="align-test-container" style="justify-items: center;">
+                <div class="box">A</div><div class="box">B</div>
+            </div>
+        </div>
+        <div>
+            <p>justify-items: end</p>
+            <div class="align-test-container" style="justify-items: end;">
+                <div class="box">A</div><div class="box">B</div>
+            </div>
+        </div>
+        <div>
+            <p>align-items: start</p>
+            <div class="align-test-container" style="align-items: start;">
+                <div class="box">A</div><div class="box">B</div>
+            </div>
+        </div>
+        <div>
+            <p>align-items: center</p>
+            <div class="align-test-container" style="align-items: center;">
+                <div class="box">A</div><div class="box">B</div>
+            </div>
+        </div>
+        <div>
+            <p>align-items: end</p>
+            <div class="align-test-container" style="align-items: end;">
+                <div class="box">A</div><div class="box">B</div>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Level 4 — Grid Item Positioning</h2>
+    
+    <h3>Task 12</h3>
+    <div class="demo-container">
+        <div class="l4-t12-grid">
+            <div class="box">Spans 2 Columns</div><div class="box">Item 2</div><div class="box">Item 3</div>
+            <div class="box">Item 4</div><div class="box">Item 5</div><div class="box">Item 6</div>
+        </div>
+    </div>
+
+    <h3>Task 13</h3>
+    <div class="demo-container">
+        <div class="l4-t13-grid">
+            <div class="header">Header Section</div>
+            <div class="sidebar">Sidebar Control Panel</div>
+            <div class="main">Main Content Display Module Workspace</div>
+            <div class="footer">Footer System Line</div>
+        </div>
+    </div>
+
+    <h3>Task 14</h3>
+    <div class="demo-container">
+        <div class="l4-t14-grid">
+            <div class="magazine-featured">
+                <h4>Breaking: Core Grid Layout Mechanics Explained</h4>
+                <p>This wide block occupies two rows and two columns cleanly.</p>
+            </div>
+            <div class="magazine-regular">Regular Update Feed A</div>
+            <div class="magazine-regular">Regular Update Feed B</div>
+            <div class="magazine-regular">Regular Update Feed C</div>
+            <div class="magazine-regular">Regular Update Feed D</div>
+        </div>
+    </div>
+
+    <h3>Task 15</h3>
+    <div class="demo-container">
+        <div class="l4-t15-grid">
+            <div class="box showcase-featured">★ Featured Item Block (Spans 2 Columns)</div>
+            <div class="box">Standard Item</div>
+            <div class="box">Standard Item</div>
+            <div class="box">Standard Item</div>
+        </div>
+    </div>
+
+
+    <h2>Level 5 — Grid Template Areas</h2>
+    
+    <h3>Task 16</h3>
+    <div class="demo-container">
+        <div class="l5-t16-grid">
+            <div class="h">Header Area</div>
+            <div class="s">Sidebar Area</div>
+            <div class="m">Main Feed Content Area</div>
+            <div class="f">Footer Area</div>
+        </div>
+    </div>
+
+    <h3>Task 17</h3>
+    <div class="demo-container">
+        <div class="l5-t17-grid">
+            <div class="h">Admin Control Header Strip</div>
+            <div class="m">Side Menu</div>
+            <div class="c">Primary System Configuration Content Panel</div>
+            <div class="a">Ad Panel Banner</div>
+            <div class="f">System Footer Info</div>
+        </div>
+    </div>
+
+    <h3>Task 18</h3>
+    <div class="demo-container">
+        <div class="l5-t18-grid">
+            <div class="h">Blog Title Banner Header</div>
+            <div class="n">Navigation Bar (Home | Categories | Contact)</div>
+            <div class="m">Main Published Article Content</div>
+            <div class="s">Author Bio Sidebar Widget</div>
+            <div class="f">Copyright Information Strip</div>
+        </div>
+    </div>
+
+
+    <h2>Level 6 — Responsive Grid</h2>
+    
+    <h3>Task 19 (Resize window to see columns scale 4 -> 2 -> 1)</h3>
+    <div class="demo-container">
+        <div class="l6-t19-grid">
+            <div class="box">Product A</div><div class="box">Product B</div>
+            <div class="box">Product C</div><div class="box">Product D</div>
+        </div>
+    </div>
+
+    <h3>Task 20 (Mini Project: E-Commerce Storefront Engine Workspace)</h3>
+    <div class="demo-container">
+        <div class="ecommerce-root">
+            <header class="eco-header"><h2>E-STORE PLATFORM ENGINE</h2></header>
+            <nav class="eco-nav">PROMO: Save up to 40% with checking out early today!</nav>
+            <section class="eco-hero"><h1>Huge Mid-Summer Sales Event Live</h1><p>Explore high performance frameworks and modules now.</p></section>
+            
+            <section class="eco-cats">
+                <div class="eco-cat-card">Electronics</div>
+                <div class="eco-cat-card">Apparel</div>
+                <div class="eco-cat-card">Home Gear</div>
+                <div class="eco-cat-card">Books</div>
+            </section>
+            
+            <aside class="eco-sidebar">
+                <h4>Filter Parameters</h4>
+                <br>
+                <p>☐ Under $25</p>
+                <p>☐ $25 to $100</p>
+                <p>☐ Premium Stock</p>
+            </aside>
+            
+            <main class="eco-main">
+                <div class="eco-product-card"><div class="eco-product-img"></div><h5>Item Alpha</h5><p>$19.99</p></div>
+                <div class="eco-product-card"><div class="eco-product-img"></div><h5>Item Beta</h5><p>$45.00</p></div>
+                <div class="eco-product-card"><div class="eco-product-img"></div><h5>Item Gamma</h5><p>$89.99</p></div>
+            </main>
+            
+            <section class="eco-reviews">
+                <div class="eco-review-card"><p><strong>"Flawless delivery mechanics."</strong></p><p>- User 9901</p></div>
+                <div class="eco-review-card"><p><strong>"High durability and production value."</strong></p><p>- QA Architect</p></div>
+            </section>
+            
+            <footer class="eco-footer"><p>© 2026 Grid-Engine Automated Commerce Core Module</p></footer>
+        </div>
+    </div>
+
+</body>
+</html>
