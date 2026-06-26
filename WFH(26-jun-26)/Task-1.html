@@ -1,1 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python-FSD: Flexbox Tasks (1-20)</title>
+    <style>
+        /* Global Styles & Resets */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+        h2 {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px 20px;
+            margin-top: 40px;
+            border-radius: 5px;
+        }
+        h3 {
+            margin: 20px 0 10px 0;
+            color: #34495e;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 5px;
+        }
+        .demo-container {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .box {
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
 
+        /* Level 1 — Basic Flexbox */
+        .l1-t1-container {
+            display: flex;
+            gap: 20px;
+        }
+        .l1-t1-container .box {
+            flex: 1; /* Equal width */
+        }
+
+        .l1-t2-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2c3e50;
+            padding: 15px 30px;
+            color: white;
+            border-radius: 5px;
+        }
+        .l1-t2-nav .menu {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .l1-t3-container {
+            display: flex;
+            gap: 20px;
+        }
+        .l1-t3-card {
+            flex: 1; /* Equal width */
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            background: #fafafa;
+        }
+        .l1-t3-card .card-img {
+            height: 120px;
+            background-color: #bdc3c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        .l1-t3-card .card-body {
+            padding: 15px;
+        }
+        .l1-t3-card button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .l1-t4-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .l1-t4-box {
+            width: 120px;
+            height: 120px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .l1-t5-container {
+            display: flex;
+            gap: 20px;
+        }
+        .l1-t5-plan {
+            flex: 1;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .l1-t5-plan.premium {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* Level 2 — Flex Direction */
+        .l2-t6-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .l2-t7-container {
+            display: flex;
+            gap: 20px;
+        }
+        .l2-t7-sidebar {
+            flex: 1;
+            background-color: #e74c3c;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .l2-t7-main {
+            flex: 3;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .l2-t8-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .l2-t8-avatar {
+            width: 80px;
+            height: 80px;
+            background: #95a5a6;
+            border-radius: 50%;
+        }
+
+        /* Level 3 — Justify Content */
+        .l3-container {
+            display: flex;
+            background-color: #eee;
+            padding: 10px;
+            margin-bottom: 10px;
+            gap: 5px;
+        }
+        .l3-t9 { justify-content: center; }
+        .l3-t10 { justify-content: space-between; }
+        .l3-flex-start { justify-content: flex-start; }
+        .l3-flex-end { justify-content: flex-end; }
+        .l3-center { justify-content: center; }
+        .l3-space-between { justify-content: space-between; }
+        .l3-space-around { justify-content: space-around; }
+        .l3-space-evenly { justify-content: space-evenly; }
+
+        /* Level 4 — Align Items */
+        .l4-t12-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background-color: #ebedef;
+            border: 2px dashed #bdc3c7;
+        }
+
+        .l4-t13-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .l4-t13-container {
+            display: flex;
+            background: #ebedef;
+            padding: 10px;
+            gap: 10px;
+            height: 250px;
+        }
+        .l4-t13-container div:nth-child(1) { height: 100px; background: #e74c3c; }
+        .l4-t13-container div:nth-child(2) { height: 150px; background: #2ecc71; }
+        .l4-t13-container div:nth-child(3) { height: 80px;  background: #f1c40f; }
+        .l4-t13-container div:nth-child(4) { height: 200px; background: #9b59b6; }
+        .l4-t13-container .box { width: 80px; }
+
+        /* Align item live experiments */
+        .align-stretch { align-items: stretch; }
+        .align-stretch .box { height: auto !important; } /* Stretch requires height auto */
+        .align-center { align-items: center; }
+        .align-start { align-items: flex-start; }
+        .align-end { align-items: flex-end; }
+        .align-baseline { align-items: baseline; }
+
+        .l4-t14-wrapper {
+            background-color: #7f8c8d;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
+        .l4-t14-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 320px;
+        }
+        .l4-t14-card input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .l4-t14-card button {
+            width: 100%;
+            padding: 10px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Level 5 — Flex Wrap */
+        .l5-t15-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .l5-t15-container .box {
+            width: 150px;
+        }
+
+        .l5-t16-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .l5-t16-item {
+            width: 200px;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 4px;
+        }
+        .l5-t16-img {
+            height: 100px;
+            background: #dfe6e9;
+            margin-bottom: 10px;
+        }
+
+        .l5-t17-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .l5-t17-thumb {
+            flex: 1 1 120px; /* grow, shrink, basis dynamic scaling */
+            height: 100px;
+            background-color: #ffeaa7;
+            border: 1px solid #ecee65;
+            border-radius: 4px;
+        }
+
+        /* Level 6 — Flex Grow, Shrink & Basis */
+        .l6-t18-container {
+            display: flex;
+            gap: 10px;
+        }
+        .l6-t18-b1 { flex: 1; background-color: #e74c3c;}
+        .l6-t18-b2 { flex: 2; background-color: #2ecc71;}
+        .l6-t18-b3 { flex: 3; background-color: #f1c40f;}
+
+        .l6-t19-container {
+            display: flex;
+            gap: 10px;
+            background: #eee;
+            padding: 10px;
+        }
+        .l6-t19-b1 { flex-basis: 100px; background: #8e44ad; }
+        .l6-t19-b2 { flex-basis: 200px; background: #d35400; }
+        .l6-t19-b3 { flex-basis: 300px; background: #2c3e50; }
+        .l6-t19-b4 { flex-basis: auto;  background: #16a085; }
+
+        /* Task 20 — Dashboard Layout Mini Project */
+        .dashboard-root {
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+            border: 3px solid #2c3e50;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .dash-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+        .dash-body {
+            display: flex;
+            flex: 1; /* Fills remaining vertical space */
+        }
+        .dash-sidebar {
+            width: 200px; /* Fixed Width */
+            background-color: #34495e;
+            color: white;
+            padding: 20px;
+        }
+        .dash-sidebar ul {
+            list-style: none;
+        }
+        .dash-sidebar li {
+            padding: 10px 0;
+            border-bottom: 1px solid #4f5f6f;
+        }
+        .dash-content {
+            flex: 1; /* Flexible Main Space */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #ecf0f1;
+        }
+        .dash-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .dash-card {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .dash-table-wrapper {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .dash-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .dash-table th, .dash-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .dash-table th { background-color: #f8f9fa; }
+        .dash-footer {
+            background-color: #bdc3c7;
+            padding: 10px;
+            text-align: center;
+            margin-top: auto; /* Pushes to bottom of layout flex container */
+        }
+
+        /* Responsive Breakpoint for Dashboard */
+        @media (max-width: 768px) {
+            .dash-body {
+                flex-direction: column;
+            }
+            .dash-sidebar {
+                width: 100%;
+            }
+            .dash-cards {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python-FSD: Flexbox Mastery Lab</h1>
+
+    <h2>Level 1 — Basic Flexbox</h2>
+    
+    <h3>Task 1</h3>
+    <div class="demo-container">
+        <div class="l1-t1-container">
+            <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+            <div class="box">Box 3</div>
+            <div class="box">Box 4</div>
+            <div class="box">Box 5</div>
+        </div>
+    </div>
+
+    <h3>Task 2</h3>
+    <div class="demo-container">
+        <nav class="l1-t2-nav">
+            <div class="logo"><strong>DevLogo</strong></div>
+            <ul class="menu">
+                <li>Home</li>
+                <li>About</li>
+                <li>Services</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+    </div>
+
+    <h3>Task 3</h3>
+    <div class="demo-container">
+        <div class="l1-t3-container">
+            <div class="l1-t3-card">
+                <div class="card-img">Placeholder Image</div>
+                <div class="card-body">
+                    <h4>Card Title 1</h4>
+                    <p>Description text goes here for card details.</p>
+                    <button>Action</button>
+                </div>
+            </div>
+            <div class="l1-t3-card">
+                <div class="card-img">Placeholder Image</div>
+                <div class="card-body">
+                    <h4>Card Title 2</h4>
+                    <p>Description text goes here for card details.</p>
+                    <button>Action</button>
+                </div>
+            </div>
+            <div class="l1-t3-card">
+                <div class="card-img">Placeholder Image</div>
+                <div class="card-body">
+                    <h4>Card Title 3</h4>
+                    <p>Description text goes here for card details.</p>
+                    <button>Action</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Task 4</h3>
+    <div class="demo-container">
+        <div class="l1-t4-container">
+            <div class="l1-t4-box" style="background-color: #1abc9c;">1</div>
+            <div class="l1-t4-box" style="background-color: #2ecc71;">2</div>
+            <div class="l1-t4-box" style="background-color: #3498db;">3</div>
+            <div class="l1-t4-box" style="background-color: #9b59b6;">4</div>
+            <div class="l1-t4-box" style="background-color: #e67e22;">5</div>
+            <div class="l1-t4-box" style="background-color: #e74c3c;">6</div>
+        </div>
+    </div>
+
+    <h3>Task 5</h3>
+    <div class="demo-container">
+        <div class="l1-t5-container">
+            <div class="l1-t5-plan">
+                <h4>Basic</h4>
+                <p>$9.99/mo</p>
+            </div>
+            <div class="l1-t5-plan">
+                <h4>Standard</h4>
+                <p>$19.99/mo</p>
+            </div>
+            <div class="l1-t5-plan premium">
+                <h4>Premium</h4>
+                <p>$29.99/mo</p>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Level 2 — Flex Direction</h2>
+    
+    <h3>Task 6</h3>
+    <div class="demo-container">
+        <div class="l2-t6-container">
+            <div class="box">Vertical Box 1</div>
+            <div class="box">Vertical Box 2</div>
+            <div class="box">Vertical Box 3</div>
+            <div class="box">Vertical Box 4</div>
+            <div class="box">Vertical Box 5</div>
+        </div>
+    </div>
+
+    <h3>Task 7</h3>
+    <div class="demo-container">
+        <div class="l2-t7-container">
+            <aside class="l2-t7-sidebar">
+                <h4>Menu</h4>
+                <p>Navigation Links</p>
+            </aside>
+            <main class="l2-t7-main">
+                <h4>Main Content Pane</h4>
+                <p>This side takes up all the available shared horizontal space dynamically.</p>
+            </main>
+        </div>
+    </div>
+
+    <h3>Task 8</h3>
+    <div class="demo-container">
+        <div class="l2-t8-profile">
+            <div class="l2-t8-avatar"></div>
+            <h3>Ram</h3>
+            <p><strong>Tech Solutions Engineer</strong></p>
+            <p>Passionate about clean Ai Models and complex Machine Learning algorithms.</p>
+        </div>
+    </div>
+
+
+    <h2>Level 3 — Justify Content</h2>
+    
+    <h3>Task 9 (Justify Content: Center)</h3>
+    <div class="demo-container">
+        <div class="l3-container l3-t9">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div>
+        </div>
+    </div>
+
+    <h3>Task 10 (Justify Content: Space-Between)</h3>
+    <div class="demo-container">
+        <div class="l3-container l3-t10">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div><div class="box">5</div>
+        </div>
+    </div>
+
+    <h3>Task 11 (All Values Comparison Matrix)</h3>
+    <div class="demo-container">
+        <p>flex-start</p>
+        <div class="l3-container l3-flex-start">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div>
+        </div>
+        <p>flex-end</p>
+        <div class="l3-container l3-flex-end">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div>
+        </div>
+        <p>center</p>
+        <div class="l3-container l3-center">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div>
+        </div>
+        <p>space-between</p>
+        <div class="l3-container l3-space-between">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div>
+        </div>
+        <p>space-around</p>
+        <div class="l3-container l3-space-around">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div>
+        </div>
+        <p>space-evenly</p>
+        <div class="l3-container l3-space-evenly">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div>
+        </div>
+    </div>
+
+
+    <h2>Level 4 — Align Items</h2>
+    
+    <h3>Task 12 (Perfect Dead-Center Box)</h3>
+    <div class="demo-container">
+        <div class="l4-t12-container">
+            <div class="box" style="width: 100px;">Centered</div>
+        </div>
+    </div>
+
+    <h3>Task 13 (Different Heights Experiment Matrix)</h3>
+    <div class="demo-container l4-t13-wrapper">
+        <div>
+            <p>align-items: stretch (with height overrides removed for effect)</p>
+            <div class="l4-t13-container align-stretch">
+                <div class="box">100px</div><div class="box">150px</div><div class="box">80px</div><div class="box">200px</div>
+            </div>
+        </div>
+        <div>
+            <p>align-items: center</p>
+            <div class="l4-t13-container align-center">
+                <div class="box">100px</div><div class="box">150px</div><div class="box">80px</div><div class="box">200px</div>
+            </div>
+        </div>
+        <div>
+            <p>align-items: flex-start</p>
+            <div class="l4-t13-container align-start">
+                <div class="box">100px</div><div class="box">150px</div><div class="box">80px</div><div class="box">200px</div>
+            </div>
+        </div>
+        <div>
+            <p>align-items: flex-end</p>
+            <div class="l4-t13-container align-end">
+                <div class="box">100px</div><div class="box">150px</div><div class="box">80px</div><div class="box">200px</div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Task 14 (Centered Login Card)</h3>
+    <div class="demo-container">
+        <div class="l4-t14-wrapper">
+            <div class="l4-t14-card">
+                <h3>Account Login</h3>
+                <input type="text" placeholder="Username/Email">
+                <input type="password" placeholder="Password">
+                <button>Authenticate</button>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Level 5 — Flex Wrap</h2>
+    
+    <h3>Task 15</h3>
+    <div class="demo-container">
+        <div class="l5-t15-container">
+            <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+            <div class="box">5</div><div class="box">6</div><div class="box">7</div><div class="box">8</div>
+            <div class="box">9</div><div class="box">10</div><div class="box">11</div><div class="box">12</div>
+        </div>
+    </div>
+
+    <h3>Task 16</h3>
+    <div class="demo-container">
+        <div class="l5-t16-container">
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 1</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 2</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 3</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 4</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 5</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 6</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 7</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 8</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 9</div>
+            <div class="l5-t16-item"><div class="l5-t16-img"></div>Product 10</div>
+        </div>
+    </div>
+
+    <h3>Task 17</h3>
+    <div class="demo-container">
+        <div class="l5-t17-container">
+            <div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div>
+            <div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div>
+            <div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div>
+            <div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div>
+            <div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div><div class="l5-t17-thumb"></div>
+        </div>
+    </div>
+
+
+    <h2>Level 6 — Flex Grow, Shrink & Basis</h2>
+    
+    <h3>Task 18 (Proportional Growth)</h3>
+    <div class="demo-container">
+        <div class="l6-t18-container">
+            <div class="box l6-t18-b1">flex: 1</div>
+            <div class="box l6-t18-b2">flex: 2</div>
+            <div class="box l6-t18-b3">flex: 3</div>
+        </div>
+    </div>
+
+    <h3>Task 19 (Explicit Base Sizes)</h3>
+    <div class="demo-container">
+        <div class="l6-t19-container">
+            <div class="box l6-t19-b1">100px</div>
+            <div class="box l6-t19-b2">200px</div>
+            <div class="box l6-t19-b3">300px</div>
+            <div class="box l6-t19-b4">Auto Space Content</div>
+        </div>
+    </div>
+
+    <h3>Task 20 (Mini Project: Full Dashboard Layout App)</h3>
+    <div class="demo-container">
+        <div class="dashboard-root">
+            
+            <header class="dash-header">
+                <h3>Global Control Header Layout</h3>
+            </header>
+            
+            <div class="dash-body">
+                <aside class="dash-sidebar">
+                    <ul>
+                        <li>Overview</li>
+                        <li>Analytics</li>
+                        <li>Users</li>
+                        <li>Settings</li>
+                    </ul>
+                </aside>
+                
+                <main class="dash-content">
+                    <section class="dash-cards">
+                        <div class="dash-card"><h4>Metric A</h4><p>2,341</p></div>
+                        <div class="dash-card"><h4>Metric B</h4><p>$14,210</p></div>
+                        <div class="dash-card"><h4>Metric C</h4><p>94.2%</p></div>
+                        <div class="dash-card"><h4>Metric D</h4><p>12m ago</p></div>
+                    </section>
+                    
+                    <section class="dash-table-wrapper">
+                        <table class="dash-table">
+                            <thead>
+                                .<tr><th>ID</th><th>User</th><th>Status</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>#001</td><td>Team A</td><td>Online</td></tr>
+                                <tr><td>#002</td><td>Team X</td><td>Pending</td></tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <footer class="dash-footer">
+                        <p>© 2026 Admin Management Application Workspace Panel</p>
+                    </footer>
+                </main>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
