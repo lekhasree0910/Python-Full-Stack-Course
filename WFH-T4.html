@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python-FSD: Full CSS Mastery Blueprint (Tasks 1-45)</title>
+    <style>
+        /* Global Reset & Base Layout Setup */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f4f7f6;
+            color: #2c3e50;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        h1.master-title {
+            text-align: center;
+            margin: 40px 0;
+            color: #2c3e50;
+            border-bottom: 4px solid #34495e;
+            padding-bottom: 15px;
+        }
+        h2.module-header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 12px 20px;
+            margin-top: 50px;
+            border-radius: 6px;
+        }
+        h3.task-header {
+            margin: 25px 0 12px 0;
+            color: #16a085;
+            border-left: 5px solid #16a085;
+            padding-left: 10px;
+            font-size: 1.2rem;
+        }
+        .demo-panel {
+            background: #fff;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .ui-placeholder-img {
+            background: #dfe6e9;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        /* ==========================================
+           MODULE 1: CSS SELECTORS & BASIC STYLING
+           ========================================== */
+        /* Task 1 */
+        .m1-t1-profile {
+            border: 3px double #34495e;
+            background-color: #fcfcfc;
+            text-align: center;
+            padding: 20px;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        .m1-t1-profile h4 { color: #e67e22; font-family: 'Georgia', serif; }
+        .m1-t1-profile p { color: #7f8c8d; font-size: 14px; }
+        .m1-t1-avatar { width: 100px; height: 100px; background: #bdc3c7; border-radius: 50%; margin: 10px auto; }
+
+        /* Task 2 */
+        .m1-t2-resume header { background: #34495e; color: white; padding: 15px; border-radius: 6px; }
+        .m1-t2-resume section { margin: 15px 0; padding: 10px; border-bottom: 1px dashed #ccc; }
+        .m1-t2-resume h4 { color: #2980b9; text-transform: uppercase; }
+        .m1-t2-resume p { font-style: italic; color: #555; }
+
+        /* Task 3 */
+        .m1-t3-menu .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .m1-t3-menu .menu-item:hover { background-color: #ffeaa7; cursor: pointer; }
+        .m1-t3-price { color: #27ae60; font-weight: bold; font-size: 1.1rem; }
+
+        /* Task 4 */
+        .m1-t4-card { border: 1px solid #ddd; padding: 15px; width: 260px; border-radius: 6px; }
+        .m1-t4-btn { width: 100%; padding: 10px; background: #e67e22; border: none; color: white; font-weight: bold; border-radius: 4px; cursor: pointer; }
+
+        /* Task 5 */
+        .m1-t5-notice { border-left: 6px solid #bdc3c7; padding: 10px; margin-bottom: 10px; background: #fafafa; }
+        .m1-t5-notice.urgent { border-left-color: #c0392b; background: #fde8e7; }
+        .m1-t5-date { font-size: 12px; color: #95a5a6; }
+
+
+        /* ==========================================
+           MODULE 2: CSS BOX MODEL
+           ========================================== */
+        /* Task 6 */
+        .m2-t6-card {
+            width: 18%;
+            height: 110px;
+            display: inline-block;
+            margin: 1%;
+            padding: 15px;
+            border: 2px solid #2980b9;
+            background: #e8f4f8;
+            vertical-align: top;
+        }
+
+        /* Task 7 */
+        .m2-t7-bizcard {
+            width: 320px;
+            padding: 20px;
+            border: 1px solid #333;
+            background: #fff;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Task 8 */
+        .m2-t8-login {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+        .m2-t8-login input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; }
+
+        /* Task 9 */
+        .m2-t9-invite { border: 4px double #d35400; padding: 20px; text-align: center; background: #fffcf9; max-width: 400px; margin: 0 auto; }
+        .m2-t9-btn { background: #d35400; color: white; padding: 8px 20px; border: none; border-radius: 4px; margin-top: 10px; }
+
+        /* Task 10 */
+        .m2-t10-price { width: 240px; border: 2px solid #27ae60; border-radius: 8px; padding: 20px; text-align: center; }
+        .m2-t10-amt { font-size: 24px; font-weight: bold; color: #27ae60; margin: 10px 0; }
+
+
+        /* ==========================================
+           MODULE 3: CSS POSITION
+           ========================================== */
+        /* Task 11 */
+        .m3-t11-nav { position: fixed; top: 0; left: 0; width: 100%; background: #2c3e50; color: white; padding: 10px; text-align: center; z-index: 9999; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        
+        /* Task 12 */
+        .m3-t12-topbtn { position: fixed; bottom: 20px; right: 20px; background: #e74c3c; color: white; width: 45px; height: 45px; border-radius: 50%; border: none; font-weight: bold; cursor: pointer; z-index: 9999; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
+
+        /* Task 13 */
+        .m3-t13-wrapper { position: relative; display: inline-block; font-size: 28px; margin: 15px; }
+        .m3-t13-badge { position: absolute; top: -5px; right: -8px; background: red; color: white; font-size: 11px; padding: 2px 6px; border-radius: 50%; font-family: sans-serif; }
+
+        /* Task 14 */
+        .m3-t14-overlay-container { position: relative; width: 300px; }
+        .m3-t14-banner { position: absolute; bottom: 15px; left: 15px; background: rgba(231, 76, 60, 0.9); color: white; padding: 5px 15px; font-weight: bold; letter-spacing: 1px; border-radius: 3px; }
+
+        /* Task 15 */
+        .m3-t15-sticky-nav { position: -webkit-sticky; position: sticky; top: 0; background: #16a085; color: white; padding: 12px; z-index: 999; margin: 15px 0; text-align: center; font-weight: bold; border-radius: 4px; }
+
+
+        /* ==========================================
+           MODULE 4: FLEXBOX
+           ========================================== */
+        /* Task 16 */
+        .m4-t16-nav { display: flex; justify-content: space-between; align-items: center; background: #34495e; padding: 12px 20px; color: white; border-radius: 4px; }
+        .m4-t16-links { display: flex; gap: 15px; list-style: none; }
+        .m4-t16-links a { color: white; text-decoration: none; }
+
+        /* Task 17 */
+        .m4-t17-container { display: flex; justify-content: space-between; gap: 15px; }
+        .m4-t17-card { flex: 1; background: #f8f9fa; border: 1px solid #e1e4e6; padding: 15px; border-radius: 6px; text-align: center; }
+
+        /* Task 18 */
+        .m4-t18-row { display: flex; gap: 20px; flex-wrap: wrap; }
+        .m4-t18-profile { display: flex; align-items: center; gap: 15px; background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; width: 280px; }
+        .m4-t18-avatar { width: 60px; height: 60px; background: #7f8c8d; border-radius: 50%; flex-shrink: 0; }
+
+        /* Task 19 */
+        .m4-t19-testi-grid { display: flex; flex-wrap: wrap; gap: 15px; }
+        .m4-t19-item { flex: 1 1 calc(33.333% - 15px); background: #f9f9f9; padding: 15px; border-left: 4px solid #3498db; border-radius: 0 4px 4px 0; }
+
+        /* Task 20 */
+        .m4-t20-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; background: #2c3e50; color: white; padding: 25px; border-radius: 6px; }
+        .m4-t20-col { flex: 1; min-width: 150px; }
+        .m4-t20-col ul { list-style: none; padding-top: 8px; }
+        .m4-t20-col li { margin-bottom: 5px; font-size: 14px; opacity: 0.8; }
+
+
+        /* ==========================================
+           MODULE 5: CSS GRID
+           ========================================== */
+        /* Task 21 */
+        .m5-t21-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        
+        /* Task 22 */
+        .m5-t22-dashboard { display: grid; grid-template-columns: 200px 1fr; gap: 15px; }
+        .m5-t22-header { grid-column: 1 / -1; background: #2c3e50; color: white; padding: 12px; text-align: center; border-radius: 4px; }
+        .m5-t22-sidebar { background: #34495e; color: white; padding: 15px; min-height: 150px; border-radius: 4px; }
+        .m5-t22-main { background: #ecf0f1; padding: 15px; border-radius: 4px; }
+        .m5-t22-footer { grid-column: 1 / -1; background: #bdc3c7; padding: 10px; text-align: center; border-radius: 4px; }
+
+        /* Task 23 */
+        .m5-t23-magazine { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .m5-t23-feat { grid-column: span 2; grid-row: span 2; background: #2c3e50; color: white; padding: 20px; border-radius: 6px; }
+        .m5-t23-story { border: 1px solid #ddd; padding: 12px; border-radius: 4px; }
+
+        /* Task 24 */
+        .m5-t24-stud-dash { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .m5-t24-widget { background: #e8f4f8; border: 1px solid #bce0ec; padding: 15px; border-radius: 6px; }
+
+        /* Task 25 */
+        .m5-t25-admin { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+
+
+        /* ==========================================
+           MODULE 6: CSS ANIMATION
+           ========================================== */
+        /* Task 26 */
+        .m6-t26-spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin: 10px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Task 27 */
+        .m6-t27-court { height: 120px; background: #eee; position: relative; border-bottom: 3px solid #333; overflow: hidden; }
+        .m6-t27-ball { width: 30px; height: 30px; background: #e74c3c; border-radius: 50%; position: absolute; left: 50%; transform: translateX(-50%); animation: bounce 1.2s ease-in-out infinite alternate; }
+        @keyframes bounce { 0% { top: 10px; } 100% { top: 90px; } }
+
+        /* Task 28 */
+        .m6-t28-logo { width: 60px; height: 60px; background: #9b59b6; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; border-radius: 8px; animation: rotateLogo 4s linear infinite; margin: 10px auto; }
+        @keyframes rotateLogo { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Task 29 */
+        .m6-t29-bar-bg { width: 100%; background: #eee; height: 20px; border-radius: 10px; overflow: hidden; margin-top: 10px; }
+        .m6-t29-fill { height: 100%; background: #2ecc71; width: 0%; animation: loadProgress 3s ease-out infinite; }
+        @keyframes loadProgress { 0% { width: 0%; } 100% { width: 100%; } }
+
+        /* Task 30 */
+        .m6-t30-text { font-family: monospace; font-size: 1.2rem; border-right: 2px solid #333; white-space: nowrap; overflow: hidden; width: 0; animation: typing 3s steps(15) infinite, blink 0.5s step-end infinite alternate; }
+        @keyframes typing { from { width: 0 } to { width: 165px; } }
+        @keyframes blink { from { border-color: transparent } to { border-color: #333; } }
+
+
+        /* ==========================================
+           MODULE 7: CSS TRANSFORM & TRANSITION
+           ========================================== */
+        /* Task 31 */
+        .m7-t31-box { width: 200px; overflow: hidden; border-radius: 6px; }
+        .m7-t31-img { width: 100%; transition: transform 0.4s ease; }
+        .m7-t31-box:hover .m7-t31-img { transform: scale(1.2); }
+
+        /* Task 32 */
+        .m7-t32-card { width: 150px; height: 80px; background: #34495e; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; border-radius: 6px; transition: transform 0.5s ease; margin: 10px auto; }
+        .m7-t32-card:hover { transform: rotate(15deg); }
+
+        /* Task 33 */
+        .m7-t33-btn { padding: 10px 25px; background: #3498db; color: white; border: none; font-weight: bold; border-radius: 4px; transition: all 0.3s ease; cursor: pointer; }
+        .m7-t33-btn:hover { background: #1a5276; transform: scale(1.08); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* Task 34 */
+        .m7-t34-flip-wrap { perspective: 1000px; width: 220px; height: 150px; margin: 0 auto; }
+        .m7-t34-card-inner { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; position: relative; cursor: pointer; }
+        .m7-t34-flip-wrap:hover .m7-t34-card-inner { transform: rotateY(180deg); }
+        .m7-t34-front, .m7-t34-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 8px; border: 1px solid #ddd; }
+        .m7-t34-front { background: #fff; }
+        .m7-t34-back { background: #2c3e50; color: white; transform: rotateY(180deg); padding: 10px; text-align: center; }
+
+        /* Task 35 */
+        .m7-t35-row { display: flex; gap: 10px; }
+        .m7-t35-item { flex: 1; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .m7-t35-item:hover { transform: scale(1.15); z-index: 10; }
+
+
+        /* ==========================================
+           MODULE 8: MEDIA QUERIES
+           ========================================== */
+        /* Default mobile structures configured within baseline descriptors */
+        .m8-t36-login { width: 100%; max-width: 450px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 6px; }
+        .m8-t37-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .m8-t38-portfolio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .m8-t39-college { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .m8-t40-admin { display: grid; grid-template-columns: 240px 1fr; gap: 20px; }
+
+
+        /* ==========================================
+           MODULE 9: PSEUDO CLASSES & ELEMENTS
+           ========================================== */
+        /* Task 41 */
+        .m9-t41-links a:link { color: #2980b9; text-decoration: none; }
+        .m9-t41-links a:visited { color: #8e44ad; }
+        .m9-t41-links a:hover { color: #e74c3c; text-decoration: underline; }
+        .m9-t41-links a:active { color: #f1c40f; }
+
+        /* Task 42 */
+        .m9-t42-btn { position: relative; padding: 10px 20px; background: #2c3e50; color: white; border: none; cursor: pointer; border-radius: 4px; overflow: hidden; }
+        .m9-t42-btn::before { content: "★ "; color: #f1c40f; }
+        .m9-t42-btn::after { content: " →"; font-weight: bold; }
+
+        /* Task 43 */
+        .m9-t43-dropcap::first-letter { font-size: 3rem; font-weight: bold; color: #e67e22; float: left; margin-right: 8px; line-height: 1; }
+
+        /* Task 44 */
+        .m9-t44-line::first-line { font-weight: bold; color: #2c3e50; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Task 45 */
+        .m9-t45-label { display: flex; align-items: center; cursor: pointer; gap: 10px; font-weight: bold; }
+        .m9-t45-chk { display: none; }
+        .m9-t45-box { width: 22px; height: 22px; border: 2px solid #34495e; border-radius: 4px; display: inline-block; position: relative; }
+        .m9-t45-chk:checked + .m9-t45-box::after { content: "✓"; position: absolute; top: -2px; left: 3px; color: #2ecc71; font-weight: bold; font-size: 16px; }
+
+
+        /* ==========================================
+           CROSS-MODULE MEDIA QUERY BREAKPOINTS
+           ========================================== */
+        @media (max-width: 1024px) {
+            /* Task 21 & 37 */
+            .m5-t21-gallery { grid-template-columns: repeat(2, 1fr); }
+            .m8-t37-grid { grid-template-columns: repeat(3, 1fr); }
+            .m8-t38-portfolio { grid-template-columns: repeat(2, 1fr); }
+            .m8-t39-college { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            /* Task 16 */
+            .m4-t16-nav { flex-direction: column; gap: 10px; text-align: center; }
+            .m4-t16-links { flex-direction: column; gap: 8px; }
+
+            /* Task 17 */
+            .m4-t17-container { flex-direction: column; }
+
+            /* Task 19 */
+            .m4-t19-item { flex: 1 1 100%; }
+
+            /* Task 21, 37, 38, 39 */
+            .m5-t21-gallery, .m8-t37-grid, .m8-t38-portfolio, .m8-t39-college { grid-template-columns: 1fr; }
+
+            /* Task 22 & 40 */
+            .m5-t22-dashboard, .m8-t40-admin { grid-template-columns: 1fr; }
+            
+            /* Task 23 */
+            .m5-t23-magazine { grid-template-columns: 1fr; }
+            .m5-t23-feat { grid-column: span 1; }
+
+            /* Task 24 */
+            .m5-t24-stud-dash { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="top-sentinel"></div>
+    <button class="m3-t12-topbtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+    <div class="m3-t11-nav">
+        <strong>Terminal Monitoring Active Frame Layer Panel Navigation System Bar (Task 11 Fixed Position)</strong>
+    </div>
+
+    <h1 class="master-title">Python-FSD: Integrated Frontend Workspace Blueprint</h1>
+
+    <h2 class="module-header">Module 1: CSS Selectors & Basic Styling</h2>
+    
+    <h3 class="task-header">Task 1: Student Profile Page</h3>
+    <div class="demo-panel">
+        <div class="m1-t1-profile">
+            <div class="m1-t1-avatar"></div>
+            <h4>S. Lakshmi Sagar</h4>
+            <p><strong>Roll:</strong> 23691A3329</p>
+            <p><strong>Dept:</strong> AI&ML</p>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 2: Online Resume</h3>
+    <div class="demo-panel">
+        <div class="m1-t2-resume">
+            <header><h3>Jane Doe, Solutions Architect</h3></header>
+            <section>
+                <h4>Executive Profile</h4>
+                <p>Specialist in automated full-stack cloud system architectures and modular interfaces.</p>
+            </section>
+            <section>
+                <h4>Technical Skills</h4>
+                <p>Python Core, Django Enterprise, CSS Grid Framework Layout Configurations, Deployment Engine Controls.</p>
+            </section>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 3: Restaurant Menu</h3>
+    <div class="demo-panel">
+        <div class="m1-t3-menu">
+            <h4>Gourmet Mains Category</h4>
+            <div class="menu-item">
+                <div><h5>Slow Roasted Truffle Ribeye</h5><p>Wagyu base with fresh seasonal herbs</p></div>
+                <div class="m1-t3-price">$48</div>
+            </div>
+            <div class="menu-item">
+                <div><h5>Wild-Caught Atlantic Sea Bass</h5><p>Pan-seared over organic micro-greens</p></div>
+                <div class="m1-t3-price">$39</div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 4: Product Information Card</h3>
+    <div class="demo-panel">
+        <div class="m1-t4-card">
+            <div class="ui-placeholder-Product-Img ui-placeholder-img">Product Image</div>
+            <h4>Acoustic Noise-Canceling Headphones</h4>
+            <p style="color: #27ae60; font-weight: bold; margin: 5px 0;">$299.00</p>
+            <p style="color: #f1c40f; font-size: 14px; margin-bottom: 10px;">★★★★★ (4.9 Rating)</p>
+            <button class="m1-t4-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 5: College Notice Board</h3>
+    <div class="demo-panel">
+        <div class="m1-t5-notice urgent">
+            <div class="m1-t5-date">June 27, 2026</div>
+            <strong>URGENT: Server Terminal Access Lockout Window Schedule notice</strong>
+            <p>All laboratory instances unmount tonight for systematic schema database migrations.</p>
+        </div>
+        <div class="m1-t5-notice">
+            <div class="m1-t5-date">June 25, 2026</div>
+            <strong>General: Hackathon Registration Windows Opened</strong>
+            <p>Applications remain open via the primary registry workspace panel modules directly.</p>
+        </div>
+    </div>
+
+
+    <h2 class="module-header">Module 2: CSS Box Model</h2>
+    
+    <h3 class="task-header">Task 6: Box Model Grid Architecture Elements</h3>
+    <div class="demo-panel">
+        <div class="m2-t6-card"><h5>Alpha Node</h5><p>Card content spacing template check matrix.</p></div>
+        <div class="m2-t6-card"><h5>Beta Node</h5><p>Card content spacing template check matrix.</p></div>
+        <div class="m2-t6-card"><h5>Gamma Node</h5><p>Card content spacing template check matrix.</p></div>
+        <div class="m2-t6-card"><h5>Delta Node</h5><p>Card content spacing template check matrix.</p></div>
+        <div class="m2-t6-card"><h5>Epsilon Node</h5><p>Card content spacing template check matrix.</p></div>
+    </div>
+
+    <h3 class="task-header">Task 7: Business Card</h3>
+    <div class="demo-panel">
+        <div class="m2-t7-bizcard">
+            <div style="width: 40px; height: 40px; background: #2c3e50; border-radius: 4px; margin-bottom: 10px;"></div>
+            <h4>David Vance</h4>
+            <p style="color: #e67e22; font-size: 14px; font-weight: bold;">Lead Security Infrastructure</p>
+            <p style="margin-top: 10px; font-size: 12px; color: #7f8c8d;">SecureLine: +1 (555) 901-2241</p>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 8: Login Form Component</h3>
+    <div class="demo-panel">
+        <div class="m2-t8-login">
+            <h4>System Authentication</h4>
+            <input type="text" placeholder="Identity Handle / Email">
+            <input type="password" placeholder="Passphrase Hash Key">
+            <button style="width: 100%; padding: 10px; background: #2980b9; border: none; color: white; border-radius: 4px; font-weight: bold;">Sign In</button>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 9: Event Invitation Card</h3>
+    <div class="demo-panel">
+        <div class="m2-t9-invite">
+            <h3>Annual Technological Summit 2026</h3>
+            <p style="margin: 10px 0; color: #7f8c8d;">Join us for extensive data systems analysis and architecture evaluation panel modules.</p>
+            <p><strong>Venue:</strong> Grand Automation Theatre Hall, Hub West</p>
+            <button class="m2-t9-btn">Confirm RSVP Presence</button>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 10: Pricing Card</h3>
+    <div class="demo-panel">
+        <div class="m2-t10-price">
+            <h4>Enterprise Platform Engine</h4>
+            <div class="m2-t10-amt">$149<span style="font-size: 14px; color:#aaa;"> / mo</span></div>
+            <p style="font-size: 13px; color: #666; margin-bottom: 15px;">Unlimited container instances, continuous synchronization engines, standard cloud redundancy arrays.</p>
+            <button style="background: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 4px; font-weight: bold; width: 100%;">Buy License Plan</button>
+        </div>
+    </div>
+
+
+    <h2 class="module-header">Module 3: CSS Position</h2>
+    
+    <h3 class="task-header">Task 13: Notification Badge Component</h3>
+    <div class="demo-panel">
+        <div class="m3-t13-wrapper">
+            🔔
+            <span class="m3-t13-badge">9</span>
+        </div>
+        <p style="display: inline-block; margin-left: 20px; font-size: 14px; color: #666; vertical-align: super;">The absolute element scales directly anchored over the native boundary borders of the relative icon container block wrapper structure.</p>
+    </div>
+
+    <h3 class="task-header">Task 14: Image with Text Overlay</h3>
+    <div class="demo-panel">
+        <div class="m3-t14-overlay-container">
+            <div class="ui-placeholder-img" style="height: 180px; margin: 0;">Main Promotion Graphic Element</div>
+            <div class="m3-t14-banner">SALE 50%</div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 15: Sticky Navigation Bar Element</h3>
+    <div class="m3-t15-sticky-nav">
+        ★ Sticky Action Menu Header Strip (Scroll Viewport Context Window to Observe Lock Behavior)
+    </div>
+
+
+    <h2 class="module-header">Module 4: Flexbox</h2>
+    
+    <h3 class="task-header">Task 16: Responsive Navigation Frame</h3>
+    <div class="demo-panel">
+        <nav class="m4-t16-nav">
+            <div class="logo"><strong>EnterpriseSystemLogo</strong></div>
+            <ul class="m4-t16-links">
+                <li><a href="#">Home</a></li><li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li><li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <h3 class="task-header">Task 17: Service Provision Matrix Grid</h3>
+    <div class="demo-panel">
+        <div class="m4-t17-container">
+            <div class="m4-t17-card"><h5>Compute Core</h5><p>Dynamic cloud processing resource provisioning nodes.</p></div>
+            <div class="m4-t17-card"><h5>Storage Mesh</h5><p>Distributed highly available object data cluster access arrays.</p></div>
+            <div class="m4-t17-card"><h5>Security Vault</h5><p>Automated public key lifecycle cryptography layers.</p></div>
+            <div class="m4-t17-card"><h5>Analytics Engine</h5><p>Real-time continuous memory evaluation telemetry pipelines.</p></div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 18: Employee Profile Workspace Cards</h3>
+    <div class="demo-panel">
+        <div class="m4-t18-row">
+            <div class="m4-t18-profile">
+                <div class="m4-t18-avatar"></div>
+                <div><h5>Marcus Aurelius</h5><p style="font-size: 13px; color: #7f8c8d;">Operations Director</p><p style="font-size: 12px; color: #aaa;">m.aurelius@sys.net</p></div>
+            </div>
+            <div class="m4-t18-profile">
+                <div class="m4-t18-avatar"></div>
+                <div><h5>Hypatia Alexandria</h5><p style="font-size: 13px; color: #7f8c8d;">Lead Analytics Chair</p><p style="font-size: 12px; color: #aaa;">h.alex@sys.net</p></div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 19: Testimonial Processing Modules Section</h3>
+    <div class="demo-panel">
+        <div class="m4-t19-testi-grid">
+            <div class="m4-t19-item"><p>"The throughput scaling performance metrics exceeded our initial pipeline projections entirely."</p><br><strong>- Client Instance 011</strong></div>
+            <div class="m4-t19-item"><p>"Outstanding architectural isolation models. Standard integration was completed in single-digit sprint workflows."</p><br><strong>- Security Auditor Lead</strong></div>
+            <div class="m4-t19-item"><p>"Flawless data durability paradigms over distributed edge structures. Highly recommend compliance migration."</p><br><strong>- Enterprise Systems Architect</strong></div>
+            <div class="m4-t19-item"><p>"System maintenance overhead functions plummeted by nearly 60 percent following successful framework installation."</p><br><strong>- Operations VP</strong></div>
+            <div class="m4-t19-item"><p>"The interface framework options maintain clean design alignment consistency while deploying heavy layout instances smoothly."</p><br><strong>- Senior UX Lead</strong></div>
+            <div class="m4-t19-item"><p>"We verified consistent security perimeter isolation over continuous adversarial fuzzing simulations."</p><br><strong>- SecOps Principal</strong></div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 20: Comprehensive System Footer Component Layout</h3>
+    <div class="demo-panel">
+        <footer class="m4-t20-footer">
+            <div class="m4-t20-col"><h5>Architecture Core</h5><p style="font-size: 13px; opacity:0.7; margin-top:8px;">Continuous optimization frameworks and modular frontend software workspace platforms.</p></div>
+            <div class="m4-t20-col"><h5>Quick Controls</h5><ul><li>Dashboard Hub</li><li>System Metrics</li><li>Status Monitors</li></ul></div>
+            <div class="m4-t20-col"><h5>Contact Hub</h5><ul><li>Registry Desk</li><li>Support Pipelines</li><li>Data Assurance Office</li></ul></div>
+            <div class="m4-t20-col"><h5>Social Networks</h5><ul><li>Enterprise Network</li><li>Internal Workspace</li><li>Code Storage Repository</li></ul></div>
+        </footer>
+    </div>
+
+
+    <h2 class="module-header">Module 5: CSS Grid</h2>
+    
+    <h3 class="task-header">Task 21: Multi-Column Responsive Photo Grid Display</h3>
+    <div class="demo-panel">
+        <div class="m5-t21-gallery">
+            <div class="ui-placeholder-img">Image Block Asset 01</div><div class="ui-placeholder-img">Image Block Asset 02</div>
+            <div class="ui-placeholder-img">Image Block Asset 03</div><div class="ui-placeholder-img">Image Block Asset 04</div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 22: Structural Layout Engine Dashboard Workspace</h3>
+    <div class="demo-panel">
+        <div class="m5-t22-dashboard">
+            <header class="m5-t22-header">Primary Automation Control Panel Grid Header Banner Block</header>
+            <aside class="m5-t22-sidebar">Sidebar Directory Index Tree</aside>
+            <main class="m5-t22-main"><h5>Main Framework Execution Module Partition Area</h5><p>This layout uses explicit structural boundaries mapped directly via advanced modern multi-dimensional coordinates.</p></main>
+            <footer class="m5-t22-footer">Control Room Layout Footer Context Strip Instance Line</footer>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 23: Magazine Complex Element Column Typographic Flow</h3>
+    <div class="demo-panel">
+        <div class="m5-t23-magazine">
+            <div class="m5-t23-feat">
+                <h2>FEATURED DISPATCH: The Emergence of Distributed High-Performance Layout Pipelines</h2>
+                <br>
+                <p>This critical block spans across multiple structural lines in both horizontal and vertical coordinate axes to maintain prime focal orientation prominence for top priority updates.</p>
+            </div>
+            <div class="m5-t23-story"><h5>Supporting Update Log A</h5><p>Supplementary intelligence stream analytics data entry records detail minor performance enhancements.</p></div>
+            <div class="m5-t23-story"><h5>Supporting Update Log B</h5><p>Supplementary intelligence stream analytics data entry records detail minor performance enhancements.</p></div>
+            <div class="m5-t23-story"><h5>Supporting Update Log C</h5><p>Supplementary intelligence stream analytics data entry records detail minor performance enhancements.</p></div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 24: Student Profile Dashboard Module Grid Layout</h3>
+    <div class="demo-panel">
+        <div class="m5-t24-stud-dash">
+            <div class="m5-t24-widget"><h5>Current Operational Attendance Index</h5><p style="font-size: 28px; font-weight: bold; color: #2980b9;">96.4%</p></div>
+            <div class="m5-t24-widget"><h5>Academic Grade Assessment Evaluation Matrix</h5><p style="font-size: 28px; font-weight: bold; color: #27ae60;">GPA 3.92</p></div>
+            <div class="m5-t24-widget"><h5>Pending Assignment Queue Submissions</h5><p style="font-size: 18px; font-weight: bold; color: #d35400;">3 Core Tasks Remaining</p></div>
+            <div class="m5-t24-widget"><h5>System Notifications & Feed Updates Log</h5><p style="font-size: 14px; color: #555;">Registration files confirmed for the upcoming academic module cycle block windows.</p></div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 25: Admin Configuration Panel Blueprint Matrix</h3>
+    <div class="demo-panel">
+        <div class="m5-t25-admin">
+            <div class="box" style="background:#8e44ad;">System Status ok</div>
+            <div class="box" style="background:#2c3e50;">Active Nodes: 142</div>
+            <div class="box" style="background:#16a085;">Cache Ratio: 99.1%</div>
+            <div class="box" style="background:#d35400;">Security Clearance: Lvl 4</div>
+        </div>
+    </div>
+
+
+    <h2 class="module-header">Module 6: CSS Animation</h2>
+    
+    <h3 class="task-header">Task 26: Continuous Vector Loading Spinner</h3>
+    <div class="demo-panel">
+        <div class="m6-t26-spinner"></div>
+    </div>
+
+    <h3 class="task-header">Task 27: Physical Engine Emulation Bouncing Ball Animation</h3>
+    <div class="demo-panel">
+        <div class="m6-t27-court">
+            <div class="m6-t27-ball"></div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 28: Matrix Axial Rotating Logo Component Block</h3>
+    <div class="demo-panel">
+        <div class="m6-t28-logo">FSD</div>
+    </div>
+
+    <h3 class="task-header">Task 29: Animated Asynchronous Progress Bar Element</h3>
+    <div class="demo-panel">
+        <p style="font-size: 14px; color: #666;">Simulated Processing Pipeline Flow Run...</p>
+        <div class="m6-t29-bar-bg">
+            <div class="m6-t29-fill"></div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 30: Stepped Linear Typing Text Typography Effect</h3>
+    <div class="demo-panel">
+        <div class="m6-t30-text">System operational.</div>
+    </div>
+
+
+    <h2 class="module-header">Module 7: CSS Transform & Transition</h2>
+    
+    <h3 class="task-header">Task 31: Vector Viewport Image Zoom on Hover</h3>
+    <div class="demo-panel">
+        <div class="m7-t31-box">
+            <div class="ui-placeholder-img m7-t31-img" style="margin:0;">Target Zoom Asset Element</div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 32: Matrix Transform Axial Rotating Card Module</h3>
+    <div class="demo-panel">
+        <div class="m7-t32-card">Hover Cursor</div>
+    </div>
+
+    <h3 class="task-header">Task 33: Multi-Parameter Interactive Hover Button Animation</h3>
+    <div class="demo-panel">
+        <button class="m7-t33-btn">Execute Transaction State</button>
+    </div>
+
+    <h3 class="task-header">Task 34: Three-Dimensional Preserved Flipping Product Card Module</h3>
+    <div class="demo-panel">
+        <div class="m7-t34-flip-wrap">
+            <div class="m7-t34-card-inner">
+                <div class="m7-t34-front">
+                    <div style="font-size:40px;">📦</div>
+                    <strong>Quantum Storage Vault</strong>
+                </div>
+                <div class="m7-t34-back">
+                    <h5>Technical Specifications</h5>
+                    <p style="font-size:12px; margin-top:8px;">Hardware encrypted array layer matrix, atomic operation logging engines, native optic network interfaces.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 35: Elastic Smooth Upscaling Image Gallery Component Group</h3>
+    <div class="demo-panel">
+        <div class="m7-t35-row">
+            <div class="ui-placeholder-img m7-t35-item">Asset Module A</div>
+            <div class="ui-placeholder-img m7-t35-item">Asset Module B</div>
+            <div class="ui-placeholder-img m7-t35-item">Asset Module C</div>
+        </div>
+    </div>
+
+
+    <h2 class="module-header">Module 8: Media Queries</h2>
+    
+    <h3 class="task-header">Task 36: Responsive Boundary-Fluid Login Page Layout Section</h3>
+    <div class="demo-panel">
+        <div class="m8-t36-login">
+            <h4>Access Terminal Gateway</h4>
+            <br>
+            <input type="text" placeholder="Identity Handle" style="width:100%; padding:8px; margin-bottom:10px;">
+            <input type="password" placeholder="Passphrase Secret" style="width:100%; padding:8px; margin-bottom:15px;">
+            <button style="width:100%; padding:10px; background:#34495e; color:white; border:none; border-radius:4px; font-weight:bold;">Authenticate Identity</button>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 37: Fluid Scaling Product Gallery Section (5 Columns to 3 to 1)</h3>
+    <div class="demo-panel">
+        <div class="m8-t37-grid">
+            <div class="box">Item Alpha</div><div class="box">Item Beta</div><div class="box">Item Gamma</div>
+            <div class="box">Item Delta</div><div class="box">Item Epsilon</div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 38: Fluid Matrix Responsive Portfolio Layout Grid Block</h3>
+    <div class="demo-panel">
+        <div class="m8-t38-portfolio">
+            <div class="ui-placeholder-img">Project System Node Case A</div>
+            <div class="ui-placeholder-img">Project System Node Case B</div>
+            <div class="ui-placeholder-img">Project System Node Case C</div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 39: Fluid Structural Grid Responsive College Portal Section Block</h3>
+    <div class="demo-panel">
+        <div class="m8-t39-college">
+            <div class="box" style="background:#2980b9;">Admissions Portal Hub</div>
+            <div class="box" style="background:#27ae60;">Research Cluster Indexes</div>
+            <div class="box" style="background:#e67e22;">Curriculum Schedule Catalogs</div>
+        </div>
+    </div>
+
+    <h3 class="task-header">Task 40: Responsive Fluid Structural Layout Engine Admin Control Desk</h3>
+    <div class="demo-panel">
+        <div class="m8-t40-admin">
+            <div class="box" style="background:#2c3e50;">Admin Core Sidebar Control Links Directory Tree</div>
+            <div class="box" style="background:#ecf0f1; color:#333; text-align:left;">
+                <h4>Active Control Workspace Panel Console</h4>
+                <p style="font-size:14px; margin-top:8px;">The component engine shifts from multi-axial tracking positions into cleanly consolidated horizontal configurations across restrictive consumer form factor display bounds.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <h2 class="module-header">Module 9: Pseudo Classes & Elements</h2>
+    
+    <h3 class="task-header">Task 41: Anchor State Lifecycle Matrix Configuration</h3>
+    <div class="demo-panel">
+        <div class="m9-t41-links">
+            <a href="#target-navigation-unmounted-mock-link" style="font-size: 18px; font-weight: bold;">Interactive State Validation Hyperlink Core Node</a>
+        </div>
+        <p style="font-size:12px; color:#7f8c8d; margin-top:8px;">Applies tailored contextual styles for default link, visited link states, element cursor hovers, and pointer click execution loops.</p>
+    </div>
+
+    <h3 class="task-header">Task 42: Generated Content Pseudo-Element Custom Button Structure</h3>
+    <div class="demo-panel">
+        <button class="m9-t42-btn">Launch Configuration Task Process</button>
+    </div>
+
+    <h3 class="task-header">Task 43: Advanced First-Letter Dropcap Typographic Element Formatting</h3>
+    <div class="demo-panel">
+        <p class="m9-t43-dropcap">Comprehensive systems documentation modules dictate strict compliance validation architectures across frontend rendering pipelines. Ensure execution sequences pass peripheral layout checks safely before staging distribution environments.</p>
+    </div>
+
+    <h3 class="task-header">Task 44: First-Line Typographic Flow Layout Accent Formatting</h3>
+    <div class="demo-panel">
+        <p class="m9-t44-line">this entire introductory leading text segment line automatically captures uppercase transformation styles via structural element selection rules. Subsequent processing blocks continue rendering utilizing the traditional default typography parameters assigned within global stylesheet configurations.</p>
+    </div>
+
+    <h3 class="task-header">Task 45: Abstract Custom Generated Vector Control Checkbox Input UI Element</h3>
+    <div class="demo-panel">
+        <label class="m9-t45-label">
+            <input type="checkbox" class="m9-t45-chk" checked>
+            <span class="m9-t45-box"></span>
+            <span>Authorize Automated Core Security Configuration Override Parameters</span>
+        </label>
+    </div>
+
+</body>
+</html>
