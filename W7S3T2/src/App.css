@@ -1,0 +1,419 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-title {
+  text-align: center;
+  color: #1a73e8;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  padding: 20px 0;
+}
+
+.section-title {
+  color: #5f6368;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a73e8;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #dadce0;
+  margin: 30px 0;
+}
+
+/* Card Styles */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  max-width: 400px;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  color: #1a73e8;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.card-container .card {
+  margin: 0;
+  flex: 1 1 280px;
+}
+
+/* Button Styles */
+.btn {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #1557b0;
+}
+
+.reusable-btn {
+  margin: 5px;
+}
+
+.btn-small {
+  padding: 6px 16px;
+  font-size: 0.85rem;
+}
+
+.btn-medium {
+  padding: 10px 24px;
+  font-size: 1rem;
+}
+
+.btn-large {
+  padding: 14px 32px;
+  font-size: 1.15rem;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.badge.gaming { background-color: #9c27b0; color: white; }
+.badge.five-g { background-color: #1a73e8; color: white; }
+.badge.electric { background-color: #34a853; color: white; }
+.badge.available { background-color: #34a853; color: white; }
+.badge.booked { background-color: #e8453c; color: white; }
+.badge.breakfast { background-color: #ff6d00; color: white; }
+.badge.not-available { background-color: #e8453c; color: white; }
+.badge.prescription { background-color: #e8453c; color: white; }
+.badge.veg { background-color: #34a853; color: white; }
+.badge.non-veg { background-color: #e8453c; color: white; }
+.badge.adult { background-color: #e8453c; color: white; }
+.badge.best-seller { background-color: #ff6d00; color: white; }
+.badge.out-of-stock { background-color: #e8453c; color: white; }
+.badge.membership-gold { background-color: #ffd700; color: #333; }
+.badge.membership-silver { background-color: #c0c0c0; color: #333; }
+.badge.membership-bronze { background-color: #cd7f32; color: white; }
+.badge.captain { background-color: #9c27b0; color: white; }
+.badge.hod { background-color: #1a73e8; color: white; }
+.badge.warning { background-color: #ff6d00; color: white; }
+.badge.confirmed { background-color: #34a853; color: white; }
+.badge.waiting { background-color: #ff6d00; color: white; }
+.badge.cancelled { background-color: #e8453c; color: white; }
+.badge.pending { background-color: #ff6d00; color: white; }
+.badge.shipped { background-color: #1a73e8; color: white; }
+.badge.delivered { background-color: #34a853; color: white; }
+.badge.promotion { background-color: #34a853; color: white; }
+.badge.hiring { background-color: #34a853; color: white; }
+.badge.not-hiring { background-color: #e8453c; color: white; }
+.badge.completed { background-color: #34a853; color: white; }
+.badge.not-attempted { background-color: #5f6368; color: white; }
+.badge.high { background-color: #e8453c; color: white; }
+.badge.medium { background-color: #ff6d00; color: white; }
+.badge.low { background-color: #34a853; color: white; }
+.badge.paid { background-color: #34a853; color: white; }
+.badge.pending-payment { background-color: #ff6d00; color: white; }
+.badge.scholarship { background-color: #ffd700; color: #333; }
+.badge.free-delivery { background-color: #34a853; color: white; }
+.badge.delivery-available { background-color: #34a853; color: white; }
+.badge.delivery-not-available { background-color: #e8453c; color: white; }
+.badge.expired { background-color: #e8453c; color: white; }
+.badge.active { background-color: #34a853; color: white; }
+.badge.inactive { background-color: #5f6368; color: white; }
+.badge.renew { background-color: #ff6d00; color: white; }
+.badge.sale { background-color: #e8453c; color: white; }
+.badge.featured { background-color: #9c27b0; color: white; }
+.badge.top-rated { background-color: #ffd700; color: #333; }
+.badge.new-release { background-color: #1a73e8; color: white; }
+.badge.trending { background-color: #ff6d00; color: white; }
+.badge.free-shipping { background-color: #34a853; color: white; }
+.badge.gold { background-color: #ffd700; color: #333; }
+.badge.silver { background-color: #c0c0c0; color: #333; }
+.badge.bronze { background-color: #cd7f32; color: white; }
+.badge.popular { background-color: #9c27b0; color: white; }
+.badge.limited-seats { background-color: #e8453c; color: white; }
+.badge.new-course { background-color: #1a73e8; color: white; }
+
+/* Reusable Status Badge */
+.badge.reusable { margin: 4px; }
+.badge-success, .badge-reusable.badge-success { background-color: #34a853; color: white; }
+.badge-error, .badge-reusable.badge-error { background-color: #e8453c; color: white; }
+.badge-warning, .badge-reusable.badge-warning { background-color: #ff6d00; color: white; }
+.badge-info, .badge-reusable.badge-info { background-color: #1a73e8; color: white; }
+.badge-pending, .badge-reusable.badge-pending { background-color: #ff6d00; color: white; }
+.badge-active, .badge-reusable.badge-active { background-color: #34a853; color: white; }
+.badge-inactive, .badge-reusable.badge-inactive { background-color: #5f6368; color: white; }
+.badge-default, .badge-reusable.badge-default { background-color: #5f6368; color: white; }
+
+/* Notification Badge */
+.badge.notif-success { background-color: #34a853; color: white; }
+.badge.notif-warning { background-color: #ff6d00; color: white; }
+.badge.notif-error { background-color: #e8453c; color: white; }
+.badge.notif-info { background-color: #1a73e8; color: white; }
+
+/* Order Card Colors */
+.card.order-card { border-left: 5px solid; }
+.card.order-card.pending { border-color: #ff6d00; }
+.card.order-card.shipped { border-color: #1a73e8; }
+.card.order-card.delivered { border-color: #34a853; }
+
+/* Weather Card Backgrounds */
+.card.weather-hot { background-color: #fff3e0; }
+.card.weather-normal { background-color: #e8f5e9; }
+.card.weather-cold { background-color: #e3f2fd; }
+
+.badge.temp-hot { background-color: #e8453c; color: white; }
+.badge.temp-normal { background-color: #34a853; color: white; }
+.badge.temp-cold { background-color: #1a73e8; color: white; }
+
+/* Notification Card */
+.card.notification-success { border-left: 5px solid #34a853; }
+.card.notification-warning { border-left: 5px solid #ff6d00; }
+.card.notification-error { border-left: 5px solid #e8453c; }
+.card.notification-info { border-left: 5px solid #1a73e8; }
+
+.notification-icon {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Alert Box */
+.alert-box {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  margin: 10px 0;
+  border-radius: 8px;
+  gap: 10px;
+}
+
+.alert-icon {
+  font-size: 1.3rem;
+}
+
+.alert-content strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.alert-success { background-color: #e6f4ea; border: 1px solid #34a853; }
+.alert-error { background-color: #fce8e6; border: 1px solid #e8453c; }
+.alert-warning { background-color: #fef7e0; border: 1px solid #ff6d00; }
+.alert-info { background-color: #e8f0fe; border: 1px solid #1a73e8; }
+
+/* Multi-Role Dashboard */
+.multi-role .role-dashboard {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.student-dash { background-color: #e8f5e9; }
+.faculty-dash { background-color: #e3f2fd; }
+.admin-dash { background-color: #fce4ec; }
+.trainer-dash { background-color: #fff3e0; }
+
+.role-features {
+  margin-top: 10px;
+}
+
+.role-features p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* Product List */
+.product-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.product-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.product-item .badges {
+  display: flex;
+  gap: 5px;
+}
+
+/* Employee Grid */
+.employee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.employee-item {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Movie Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.movie-item {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.movie-item .badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+/* Cart Item */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Leaderboard */
+.leaderboard-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Course Grid */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.course-item {
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.course-item .badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+/* Dashboard Grid */
+.dashboard {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+/* Badges container for inline badges */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
